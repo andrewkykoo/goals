@@ -1,4 +1,5 @@
 const express = require("express");
+const Topic = require("../models/topicModel");
 
 const router = express.Router();
 
@@ -13,8 +14,14 @@ router.get("/:id", (req, res) => {
 });
 
 // POST a new topic
-router.post("/", (req, res) => {
-  res.json({ msg: "POST a new topic" });
+router.post("/", async (req, res) => {
+  const { title, likes, dislikes, comments } = req.body;
+  try {
+    const topic = await Topic.create({ title, likes, dislikes, comments });
+    res.status(200).json(topic);
+  } catch (err) {
+    res.status(400).json({ err: err.message });
+  }
 });
 
 // DELETE a new topic

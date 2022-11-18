@@ -9,3 +9,14 @@ DELETE http://localhost:5001/api/topics/1
 
 ### update a topic
 PATCH http://localhost:5001/api/topics/1
+
+### post a topic
+POST http://localhost:5001/api/topics
+Content-Type: application/json
+
+{
+  "title": "second post",
+  "likes": 100,
+  "dislikes": 22,
+  "comments": ["cool", "agree", "disagree"]
+}
