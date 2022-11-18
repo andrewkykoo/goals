@@ -1,4 +1,5 @@
 const Topic = require("../models/topicModel");
+const mongoose = require("mongoose");
 
 // get all topics
 const getTopics = async (req, res) => {
@@ -9,6 +10,10 @@ const getTopics = async (req, res) => {
 // get a single topic
 const getSingleTopic = async (req, res) => {
   const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such topic" });
+  }
   const singleTopic = await Topic.findById(id);
 
   if (!singleTopic) {
