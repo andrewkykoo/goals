@@ -15,8 +15,8 @@ POST http://localhost:5001/api/topics
 Content-Type: application/json
 
 {
-  "title": "second post",
-  "likes": 100,
-  "dislikes": 22,
+  "title": "fourth post",
+  "likes": 12,
+  "dislikes": 0,
   "comments": ["cool", "agree", "disagree"]
 }
