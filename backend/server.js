@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const port = process.env.PORT;
+const topicRoutes = require("./routes/topics");
 
 const app = express();
 
@@ -11,9 +12,7 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.get("/", (req, res) => {
-  res.json({ msg: "working" });
-});
+app.use("/api/topics", topicRoutes);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

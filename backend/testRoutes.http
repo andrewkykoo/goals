@@ -1,2 +1,11 @@
-###
-GET http://localhost:5001
+### get all topics
+GET http://localhost:5001/api/topics
+
+### get a topic
+GET http://localhost:5001/api/topics/1
+
+### delete a topic
+DELETE http://localhost:5001/api/topics/1
+
+### update a topic
+PATCH http://localhost:5001/api/topics/1
