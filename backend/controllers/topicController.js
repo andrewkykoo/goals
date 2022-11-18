@@ -36,11 +36,43 @@ const createTopic = async (req, res) => {
 };
 
 // delete a topic
+const deleteTopic = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such topic" });
+  }
+
+  const topic = await Topic.findOneAndDelete({ _id: id });
+
+  if (!topic) {
+    return res.status(400).json({ error: "No such topic" });
+  }
+
+  res.status(200).json(topic);
+};
 
 // update a topic
+const updateTopic = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such topic" });
+  }
+
+  const topic = await Topic.findOneAndUpdate({ _id: id }, { ...req.body });
+
+  if (!topic) {
+    return res.status(400).json({ error: "No such topic" });
+  }
+
+  res.status(200).json(topic);
+};
 
 module.exports = {
   getTopics,
   getSingleTopic,
   createTopic,
+  deleteTopic,
+  updateTopic,
 };

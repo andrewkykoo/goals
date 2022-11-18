@@ -4,6 +4,8 @@ const {
   getTopics,
   getSingleTopic,
   createTopic,
+  deleteTopic,
+  updateTopic,
 } = require("../controllers/topicController");
 
 const router = express.Router();
@@ -18,13 +20,9 @@ router.get("/:id", getSingleTopic);
 router.post("/", createTopic);
 
 // DELETE a new topic
-router.delete("/:id", (req, res) => {
-  res.json({ msg: "DELETE a topic" });
-});
+router.delete("/:id", deleteTopic);
 
 // UPDATE a new topics
-router.patch("/:id", (req, res) => {
-  res.json({ msg: "UPDATE a topic" });
-});
+router.patch("/:id", updateTopic);
 
 module.exports = router;
