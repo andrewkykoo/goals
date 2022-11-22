@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Goal from "../components/Goal";
+import GoalForm from "../components/GoalForm";
 
 const Home = () => {
   const [goals, setGoals] = useState(null);
@@ -14,7 +16,14 @@ const Home = () => {
     };
     fetchGoals();
   }, []);
-  return <div>{goals && goals.map((goal) => <div>{goal.subject}</div>)}</div>;
+  return (
+    <div>
+      <div>
+        {goals && goals.map((goal) => <Goal goal={goal} key={goal._id} />)}
+      </div>
+      <GoalForm />
+    </div>
+  );
 };
 
 export default Home;
