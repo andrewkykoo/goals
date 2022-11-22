@@ -19,7 +19,14 @@ const Goal = ({ goal }) => {
     <div>
       <h1>{goal.subject}</h1>
       <p>{goal.description}</p>
-      <p>{goal.deadline}</p>
+      <p>
+        {new Date(goal.deadline).toLocaleDateString("en-us", {
+          weekday: "long",
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })}
+      </p>
       <span onClick={handleClick}>delete</span>
     </div>
   );

@@ -16,7 +16,7 @@ const Home = () => {
       }
     };
     fetchGoals();
-  }, []);
+  }, [dispatch]);
   return (
     <div>
       <div>
