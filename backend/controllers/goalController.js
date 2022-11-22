@@ -24,6 +24,26 @@ const getSingleGoal = async (req, res) => {
 const createGoal = async (req, res) => {
   const { subject, description, deadline } = req.body;
 
+  let emptyFields = [];
+
+  if (!subject) {
+    emptyFields.push("subject");
+  }
+
+  if (!description) {
+    emptyFields.push("description");
+  }
+
+  if (!deadline) {
+    emptyFields.push("deadline");
+  }
+
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: "Please fill in all fields", emptyFields });
+  }
+
   try {
     const goal = await Goal.create({ subject, description, deadline });
     res.status(200).json(goal);

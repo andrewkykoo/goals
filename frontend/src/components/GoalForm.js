@@ -7,6 +7,7 @@ const GoalForm = () => {
   const [description, setDescription] = useState("");
   const [deadline, setDeadline] = useState("");
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,6 +26,7 @@ const GoalForm = () => {
 
     if (!response.ok) {
       setError(json.error);
+      setEmptyFields(json.emptyFields);
     }
 
     if (response.ok) {
@@ -32,6 +34,7 @@ const GoalForm = () => {
       setDescription("");
       setDeadline("");
       setError(null);
+      setEmptyFields([]);
       dispatch({ type: "CREATE_GOAL", payload: json });
     }
   };
@@ -41,24 +44,27 @@ const GoalForm = () => {
       <h1>Form</h1>
       <label>Subject</label>
       <input
+        className={emptyFields.includes("subject") ? "error" : ""}
         type="text"
         onChange={(e) => setSubject(e.target.value)}
         value={subject}
       />
       <label>Description</label>
       <input
+        className={emptyFields.includes("description") ? "error" : ""}
         type="text"
         onChange={(e) => setDescription(e.target.value)}
         value={description}
       />
       <label>Deadline</label>
       <input
+        className={emptyFields.includes("deadline") ? "error" : ""}
         type="date"
         onChange={(e) => setDeadline(e.target.value)}
         value={deadline}
       />
       <button>Add</button>
-      {error && <div>{error}</div>}
+      {error && <div className="error">{error}</div>}
     </form>
   );
 };
