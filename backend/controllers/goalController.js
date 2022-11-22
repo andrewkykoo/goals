@@ -27,8 +27,8 @@ const createGoal = async (req, res) => {
   try {
     const goal = await Goal.create({ subject, description, deadline });
     res.status(200).json(goal);
-  } catch (err) {
-    res.status(400).json({ err: err.message });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 };
 
