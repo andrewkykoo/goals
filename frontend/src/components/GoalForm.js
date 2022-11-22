@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useGoalsContext } from "../hooks/useGoalsContext";
 
 const GoalForm = () => {
+  const { dispatch } = useGoalsContext();
   const [subject, setSubject] = useState("");
   const [description, setDescription] = useState("");
   const [deadline, setDeadline] = useState("");
@@ -18,6 +20,7 @@ const GoalForm = () => {
         "Content-Type": "application/json",
       },
     });
+
     const json = await response.json();
 
     if (!response.ok) {
@@ -29,7 +32,7 @@ const GoalForm = () => {
       setDescription("");
       setDeadline("");
       setError(null);
-      console.log("new goal added", json);
+      dispatch({ type: "CREATE_GOAL", payload: json });
     }
   };
 
