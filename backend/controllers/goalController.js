@@ -45,7 +45,7 @@ const deleteGoal = async (req, res) => {
     return res.status(400).json({ error: "No such goal" });
   }
 
-  res.status(200).json(topic);
+  res.status(200).json(goal);
 };
 
 const updateGoal = async (req, res) => {
