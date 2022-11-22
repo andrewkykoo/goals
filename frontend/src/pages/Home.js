@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from "react";
-import TopicThread from "../components/TopicThread";
 
 const Home = () => {
-  const [topics, setTopics] = useState(null);
+  const [goals, setGoals] = useState(null);
 
   useEffect(() => {
-    const fetchTopics = async () => {
-      const response = await fetch("/api/topics");
+    const fetchGoals = async () => {
+      const response = await fetch("/api/goals");
       const json = await response.json();
 
       if (response.ok) {
-        setTopics(json);
+        setGoals(json);
       }
     };
-    fetchTopics();
+    fetchGoals();
   }, []);
-  return (
-    <div>
-      {topics &&
-        topics.map((topic) => <TopicThread key={topic._id} topic={topic} />)}
-    </div>
-  );
+  return <div>{goals && goals.map((goal) => <div>{goal.subject}</div>)}</div>;
 };
 
 export default Home;
