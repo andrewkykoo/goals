@@ -1,15 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Heading, HStack } from "@chakra-ui/react";
+import { CalendarIcon } from "@chakra-ui/icons";
+import GoalFormModal from "./GoalFormModal";
 
 const Navbar = () => {
   return (
-    <header>
-      <div className="container">
-        <Link to="/">
-          <h1>Goals</h1>
-        </Link>
-      </div>
-    </header>
+    <>
+      <HStack>
+        <Heading>Goals</Heading>
+        <CalendarIcon color="blue.500" m={2} />
+      </HStack>
+      <GoalFormModal />
+    </>
   );
 };
 

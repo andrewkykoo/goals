@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Goal from "../components/Goal";
-import GoalForm from "../components/GoalForm";
 import { useGoalsContext } from "../hooks/useGoalsContext";
 
 const Home = () => {
@@ -22,7 +21,6 @@ const Home = () => {
       <div>
         {goals && goals.map((goal) => <Goal goal={goal} key={goal._id} />)}
       </div>
-      <GoalForm />
     </div>
   );
 };

@@ -1,19 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
+import { ChakraProvider, Center, VStack } from "@chakra-ui/react";
+import * as React from "react";
 
 function App() {
   return (
-    <div className="App">
+    <ChakraProvider>
       <BrowserRouter>
-        <Navbar />
-        <div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </div>
+        <VStack>
+          <Navbar />
+          <Center>
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </Center>
+        </VStack>
       </BrowserRouter>
-    </div>
+    </ChakraProvider>
   );
 }
 

@@ -12,7 +12,7 @@ PATCH http://localhost:5001/api/goals/
 Content-Type: application/json
 
 {
-  "dislikes": 50
+  
 }
 
 ### post a topic
@@ -20,7 +20,7 @@ POST http://localhost:5001/api/goals
 Content-Type: application/json
 
 {
-  "subject": "Monday Goal",
-  "description": "finish a goal setting app",
-  "deadline": "2022-11-22"
+  "subject": "Europe Trip",
+  "description": "Visit London for premier league games",
+  "deadline": "2022-12-25"
 }

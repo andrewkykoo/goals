@@ -1,5 +1,17 @@
 import React from "react";
 import { useGoalsContext } from "../hooks/useGoalsContext";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Stack,
+  StackDivider,
+  Heading,
+  Text,
+  Box,
+  CloseButton,
+  HStack,
+} from "@chakra-ui/react";
 
 const Goal = ({ goal }) => {
   const { dispatch } = useGoalsContext();
@@ -16,19 +28,40 @@ const Goal = ({ goal }) => {
     }
   };
   return (
-    <div>
-      <h1>{goal.subject}</h1>
-      <p>{goal.description}</p>
-      <p>
-        {new Date(goal.deadline).toLocaleDateString("en-us", {
-          weekday: "long",
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-        })}
-      </p>
-      <span onClick={handleClick}>delete</span>
-    </div>
+    <Card mb={10}>
+      <CardHeader>
+        <HStack>
+          <Heading size="md">{goal.subject.toUpperCase()}</Heading>
+          <CloseButton size="sm" onClick={handleClick} />
+        </HStack>
+      </CardHeader>
+
+      <CardBody>
+        <Stack divider={<StackDivider />} spacing="4">
+          <Box>
+            <Heading size="xs" textTransform="uppercase">
+              Summary
+            </Heading>
+            <Text pt="2" fontSize="sm">
+              {goal.description}
+            </Text>
+          </Box>
+          <Box>
+            <Heading size="xs" textTransform="uppercase">
+              Deadline
+            </Heading>
+            <Text pt="2" fontSize="sm">
+              {new Date(goal.deadline).toLocaleDateString("en-us", {
+                weekday: "long",
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </Text>
+          </Box>
+        </Stack>
+      </CardBody>
+    </Card>
   );
 };
 
