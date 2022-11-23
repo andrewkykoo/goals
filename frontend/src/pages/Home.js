@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Goal from "../components/Goal";
 import { useGoalsContext } from "../hooks/useGoalsContext";
+import { Box } from "@chakra-ui/react";
 
 const Home = () => {
   const { goals, dispatch } = useGoalsContext();
@@ -17,11 +18,9 @@ const Home = () => {
     fetchGoals();
   }, [dispatch]);
   return (
-    <div>
-      <div>
-        {goals && goals.map((goal) => <Goal goal={goal} key={goal._id} />)}
-      </div>
-    </div>
+    <Box>
+      {goals && goals.map((goal) => <Goal goal={goal} key={goal._id} />)}
+    </Box>
   );
 };
 
