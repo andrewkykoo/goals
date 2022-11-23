@@ -94,7 +94,7 @@ const GoalFormModal = () => {
             </ModalBody>
             <ModalFooter>
               {error && <Text as="mark">{error}</Text>}
-              <Button colorScheme="blue" mr={3} type="submit">
+              <Button colorScheme="teal" mr={3} type="submit">
                 Save
               </Button>
               <Button onClick={onClose}>Cancel</Button>

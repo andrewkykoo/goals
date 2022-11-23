@@ -11,7 +11,7 @@ const Navbar = () => {
           <Box p="12">
             <HStack>
               <Heading>Goals</Heading>
-              <CalendarIcon color="cyan.300" />
+              <CalendarIcon color="teal.300" />
             </HStack>
           </Box>
           <Spacer />
